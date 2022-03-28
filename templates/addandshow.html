@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+{% block content %}
+    <div class="container">
+    <div class="row">
+
+        <div class="col-md-4">
+            <h2 class="text-center alert alert-info" >Add New Student</h2>
+             <form method="POST">
+                 {% csrf_token %}
+                 {{ form.as_p }}
+                 <input type="submit" class="btn btn-success" value = "add">
+             </form>
+        </div>
+
+        <div class="col-md-8">
+            <h4 class="text-center alert alert-info" >Add New Student</h4>
+            {% if stdu %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for st in stdu%}
+                            <tr>
+                                <th scope="row">{{st.id}}</th>
+                                <td>{{st.name}}</td>
+                                <td>{{st.email}}</td>
+                                <td>{{st.password}}</td>
+                            <td>
+                            <a href="{% url 'update' st.id %}" class="btn btn-warning">Edit</a>
+                            <a href="{% url 'delete' st.id%}" class="btn btn-danger">Delete</a>
+                            </td>
+                            </tr>
+
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            {% else %}
+                <h3 class="alert alert-danger">No Record Found</h3>
+            {% endif %}
+
+
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

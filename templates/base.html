@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Curd</title>
+    <link rel="stylesheet" href="{% static 'curl/css/bootstrap.min.css'  %}">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center alert alert-danger">Function based Curd View</h2>
+
+    {% block content %}
+
+    {% endblock %}
+
+</div>
+<script src="{% static 'curl/js/boostrap.min.js' %}"></script>
+
+</body>
+</html>
